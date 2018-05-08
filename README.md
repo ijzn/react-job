@@ -31,7 +31,7 @@
   * 使用 applyMiddleware 开启 thunk 中间件
   * Action可以返回函数，使用dispatch提交action
 
-![react-thunk](https://github.com/ijzn/react-job/blob/master/img/redux6.png)
+![react-thunk](https://github.com/ijzn/react-job/blob/master/img/redux6.PNG)
 
 ![react-thunk2](https://github.com/ijzn/react-job/blob/master/img/redux7.png)
 
