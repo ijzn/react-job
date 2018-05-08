@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addGun, removeGun, addGunAsync } from './index.redux';
 @connect(
   // 你需要的state中的数据
-  state => ({num: state}),
+  state => ({num: state.counter}),
   // 你需要的方法
   {addGun, removeGun, addGunAsync}
 )

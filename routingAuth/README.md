@@ -97,3 +97,5 @@
 
 # react-router4
 
+​	[详情请见官方文档](https://reacttraining.com/react-router/web/guides/philosophy)
+
