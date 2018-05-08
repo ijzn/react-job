@@ -12,11 +12,11 @@
 
    通过reducer建立，根据老的state和action (action.type) ,生成新的 state
 
-   ![image-20180506112929170]((https://github.com/ijzn/react-job/blob/master/img/redux1.png) 
+   ![image-20180506112929170](https://github.com/ijzn/react-job/blob/master/img/redux1.png) 
 
    ​
 
-   ![img]((https://github.com/ijzn/react-job/blob/master/img/redux2.png)
+   ![img](https://github.com/ijzn/react-job/blob/master/img/redux2.png)
 
    ​
 
@@ -31,11 +31,11 @@
   * 使用 applyMiddleware 开启 thunk 中间件
   * Action可以返回函数，使用dispatch提交action
 
-![react-thunk]((https://github.com/ijzn/react-job/blob/master/img/redux6.png)
+![react-thunk](https://github.com/ijzn/react-job/blob/master/img/redux6.png)
 
-![react-thunk2]((https://github.com/ijzn/react-job/blob/master/img/redux7.png)
+![react-thunk2](https://github.com/ijzn/react-job/blob/master/img/redux7.png)
 
-![react-thunk3]((https://github.com/ijzn/react-job/blob/master/img/redux8.png)
+![react-thunk3](https://github.com/ijzn/react-job/blob/master/img/redux8.png)
 
 
 
@@ -45,9 +45,9 @@
   * 新建store的时候判断window.devToolsExtension
   * 调试窗的redux选项卡，实时看到state
 
-  ![调试器]((https://github.com/ijzn/react-job/blob/master/img/redux10.png)
+  ![调试器](https://github.com/ijzn/react-job/blob/master/img/redux10.png)
 
-  ![调试器2]((https://github.com/ijzn/react-job/blob/master/img/redux11.png)
+  ![调试器2](https://github.com/ijzn/react-job/blob/master/img/redux11.png)
 
   ​
 
