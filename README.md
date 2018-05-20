@@ -99,3 +99,73 @@
 
 ​	[详情请见官方文档](https://reacttraining.com/react-router/web/guides/philosophy)
 
+# express 和 mongodb 基础
+
+## express 
+
+express 自动更新重启
+
+```npm i nodemon -g```
+
+命令行
+
+原来命令行
+
+ ```node app.js ```
+
+下载模块后
+
+```nodemon app.js```
+
+## mongodb的安装以及简单操作
+
+### mongodb 本地安装
+
+[mongodb本地安装](https://blog.csdn.net/lengyuezuixue/article/details/79297164)
+
+安装完成后，在终端中执行
+
+```mongod —config  /usr/local/etc/mongod.conf```
+
+```mongo```
+
+这两个命令 启动mongodb；
+
+---
+
+
+
+通过mongoose连接 express和mongodb数据库
+
+```npm i mongoose —save```  安装 mongoose
+
+通过mongoose来操作mongodb数据库，存储的是json格式
+
+### mongoose 的基本操作
+
+* Connect链接数据库
+* 定义文档模型，Schema和model 新建模型
+* 带一个数据库文档对应一个模型，通过模型对数据库进行操作
+
+### Mongoose文档类型
+
+* String Number等数据结构
+* create， remove，update 分别用来增、删、改的操作
+* find 和  findOne 用来查数据
+
+
+
+# 前后端联调
+
+前端使用axios，
+
+前端在开发阶段解决跨域，在package.json中新增一行
+
+```javascript
+{
+    ...
+	// 代理的后端接口    
+	"proxy": "http://127.0.0.1:9093"
+}
+```
+
