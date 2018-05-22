@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -16,18 +15,23 @@ import reducer  from './reducer'
 
 import Login from './cintainer/login/login'
 import Register from './cintainer/register/register'
-
+import AuthRouter from '@/component/authRouter/authRouter';
 const store = createStore(reducer, compose(
   applyMiddleware(thunk),
   window.devToolsExtension?window.devToolsExtension():f=>f()  
 ))
 
+function boss() {
+  return <h2>boss page</h2>
+}
 
 ReactDOM.render(
   (
     <Provider store={store}>
       <BrowserRouter>
           <div>
+            <AuthRouter></AuthRouter>
+            <Route path='/boss' component={boss}></Route>
             <Route path='/login' component={Login}></Route>
             <Route path='/register' component={Register}></Route>
           </div>
@@ -36,13 +40,3 @@ ReactDOM.render(
   ),
   document.getElementById('root')
 )
-=======
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
->>>>>>> parent of e587831... 设置别名，logo组件 ，新建登录页面，注册页面 (未完成)
