@@ -28,7 +28,7 @@ function registerMsg(data) {
 }
 
 function errorMsg(msg) {
-  return { msg, type: ERROR_MSG }
+  return { msg: msg, type: ERROR_MSG }
 }
 
 export function regisger({ user, pwd, repeatpwd, type }) {
@@ -39,7 +39,8 @@ export function regisger({ user, pwd, repeatpwd, type }) {
     return errorMsg('密码和确认密码不同')
   }
   return dispatch => {
-    axios.post('/user/register', { user, pwd, type }).then(res => {
+    axios.post('/user/resgister', { user, pwd, type }).then(res => {
+      console.log(res)
       if (res.status === 200 && res.data.code === 0) {
         dispatch(registerMsg({ user, pwd, type }))
       } else {

@@ -99,3 +99,14 @@
 
 ​	[详情请见官方文档](https://reacttraining.com/react-router/web/guides/philosophy)
 
+
+
+# mongoose
+
+mac下如何查看指定端口被谁占用并且杀死该进程
+
+losf -i ****   ****代表你要查看的端口号
+
+kill pid     kill 进程ID
+
+[mac下如何查看指定端口被谁占用并且杀死该进程](https://www.cnblogs.com/yk123/p/5853994.html)

@@ -33,7 +33,7 @@ export default class Register extends Component {
         <Logo></Logo> 
         <WingBlank>
           <List>
-            {this.props.msg?<p className='error-msg'>用户名必须输入</p>:null}
+            {this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
             <InputItem 
               onChange={val => this.handleChange('user',val)}
             >用户名</InputItem>
