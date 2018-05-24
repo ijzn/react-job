@@ -99,14 +99,78 @@
 
 ​	[详情请见官方文档](https://reacttraining.com/react-router/web/guides/philosophy)
 
+对于普通组件想使用this.props.history的时候，可以使用withRouter；
+
+装饰器写法
+
+```javascript
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
+@withRouter
+export default class AuthRouter extends Component {
+  componentDidMount() {
+      const publicList = ['/login', '/register']
+      const pathname = this.props.location.pathname
+      if (publicList.indexOf(pathname)>-1) {
+          return null
+      }
+      axios.get('/user/info')
+      .then(res=>{
+          if (res.status === 200) {
+              if (res.data.code === 0) {
+                //   登录成功的
+
+              } else {
+                //   没有登录的
+                this.props.history.push('/login')              
+              }
+          }
+      })
+      .catch(err => {
+          console.log(err)
+      })
+  }
+  render() {
+    return <div></div>
+  }
+}
+```
 
 
-# mongoose
 
-mac下如何查看指定端口被谁占用并且杀死该进程
+# 后端知识
+
+## mongoose
+
+### mac下如何查看指定端口被谁占用并且杀死该进程
 
 losf -i ****   ****代表你要查看的端口号
 
 kill pid     kill 进程ID
 
 [mac下如何查看指定端口被谁占用并且杀死该进程](https://www.cnblogs.com/yk123/p/5853994.html)
+
+
+
+### 密码加密  md5 推荐使用 [utility](https://www.npmjs.com/package/utility)
+
+``` npm install utility```
+
+一般使用复杂字符串和特殊字符二次加盐
+
+```js
+function md5 (pwd) {
+   // 也可以是随机的字符串 
+    const salt = 'imooc_is_aaa_322_!@#$%^&*'
+    return utility.md5(utility.md5(pwd+salt))
+}
+```
+
+
+
+
+
+
+
+
+

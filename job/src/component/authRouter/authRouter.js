@@ -13,7 +13,7 @@ export default class AuthRouter extends Component {
   componentDidMount() {
       const publicList = ['/login', '/register']
       const pathname = this.props.location.pathname
-      if (publicList.indexOf(pathname)>-1) {
+        if (publicList.indexOf(pathname)>-1) {
           return null
       }
       axios.get('/user/info')

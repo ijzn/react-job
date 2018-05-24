@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Logo from '@/component/logo/logo';
 import { List, Radio, WhiteSpace, WingBlank, Button, InputItem } from 'antd-mobile';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { regisger } from '@/redux/user.redux';
 import './index.css'
 @connect(
@@ -30,22 +31,24 @@ export default class Register extends Component {
     const RadioItem = Radio.RadioItem
     return (
       <div>
+        {this.props.redirectTo?<Redirect to={this.props.redirectTo} />:null}
         <Logo></Logo> 
         <WingBlank>
           <List>
             {this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
             <InputItem 
-              onChange={val => this.handleChange('user',val)}
+              type='money'
+              onChange={v => this.handleChange('user',v)}
             >用户名</InputItem>
             <WhiteSpace />            
             <InputItem
-              type='password'
-              onChange={val => this.handleChange('pwd',val)}            
+              type='money'
+              onChange={v => this.handleChange('pwd', v)}            
             >密码</InputItem>
             <WhiteSpace />
             <InputItem
-              type='password'
-              onChange={val => this.handleChange('repeatpwd',val)}            
+              type='money'
+              onChange={v => this.handleChange('repeatpwd', v)}            
             >确认密码</InputItem>
             <WhiteSpace />
           </List>
