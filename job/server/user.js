@@ -27,6 +27,15 @@ Router.post('/resgister', function (req, res) {
   })
  })
 
+ Router.post('/login', function (req, res) {
+  const {user, pwd } = req.body
+  User.findOne({user, pwd: utils.md5(pwd)},{'pwd': 0},function (err, doc) {
+    if (!doc) {
+      return res.json({code:1,msg:'用户名不存在或者密码错误'})
+    }
+    return res.json({code:0, data:doc})
+  })
+ })
 Router.get('/info', function(req, res){
     // 校验用户有没有cookie
     return res.json({code:1})

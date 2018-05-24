@@ -142,6 +142,31 @@ export default class AuthRouter extends Component {
 
 ## mongoose
 
+```js
+//简单查询
+Model.find({'csser.com':5},function(err, docs){
+    // docs 是查询的结果数组 
+    ...
+});
+// 同上 第一个参数为查询条件 第二个参数，返回的数据doc不包含哪个
+Model.findOne({ age:5},function(err, doc){
+    // doc 是单个文档
+    ...
+});
+// Model 模型  User
+User.findOne({user, pwd: pwd},{'pwd': 0 },function (err, doc) {
+    if (!doc) {
+      return res.json({code:1,msg:'用户名不存在或者密码错误'})
+    }
+    return res.json({code:0, data:doc})
+  })
+ })
+```
+
+
+
+
+
 ### mac下如何查看指定端口被谁占用并且杀死该进程
 
 losf -i ****   ****代表你要查看的端口号
