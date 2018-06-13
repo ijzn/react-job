@@ -15,7 +15,7 @@ import reducer  from './reducer'
 
 import Login from './cintainer/login/login'
 import Register from './cintainer/register/register'
-import AuthRouter from '@/component/authRouter/authRouter';
+import AuthRouter from '@/component/authRouter/authRouter'
 const store = createStore(reducer, compose(
   applyMiddleware(thunk),
   window.devToolsExtension?window.devToolsExtension():f=>f()  

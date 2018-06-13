@@ -2,10 +2,10 @@
 import axios from 'axios';
 import { getRedirectPath } from '@/util.js'
 
-
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const LONGIN_SUCCESS = 'LONGIN_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
+const LOAD_DATA = 'LOAD_DATA'
 // reducer
 const initState = {
   redirectTo: '',
@@ -21,7 +21,9 @@ export function user(state=initState, action) {
       return {...state, msg:'', redirectTo: getRedirectPath(action.payload), isAuth:true, ...action.payload}
     case LONGIN_SUCCESS:
       return {...state, msg:'', redirectTo: getRedirectPath(action.payload), isAuth:true, ...action.payload}
-      case ERROR_MSG:
+    case LOAD_DATA:
+      return {...state, ...action.payload}
+    case ERROR_MSG:
       return {...state, isAuth:false, msg: action.msg}
     default:
       return state
@@ -38,12 +40,41 @@ function loginSuccess(data) {
 function errorMsg(msg) {
   return { msg: msg, type: ERROR_MSG }
 }
+export function loadData(userinfo) {
+  return { type: LOAD_DATA, payload: userinfo}
+}
+
+export function userinfo() {
+  // 获取用户信息
+  return dispatch =>{
+    axios
+      .get('/user/info')
+      .then(res=>{
+          if (res.status === 200) {
+              if (res.data.code === 0) {
+                //   登录成功的
+                console.log(res.data)
+                this.props.loadData(res.data.data)                
+              } else {
+                //   没有登录的
+                this.props.history.push('/login')              
+              }
+          }
+      })
+      .catch(err => {
+          console.log(err)
+      })
+  }
+}
+
+
 
 export function regisger({ user, pwd, repeatpwd, type }) {
   if (!user || !pwd || !type) {
     return errorMsg('用户名密码必须输入')
   }
   if (pwd !== repeatpwd) {
+    console.log(pwd, repeatpwd)
     return errorMsg('密码和确认密码不同')
   }
   return dispatch => {

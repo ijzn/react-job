@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Logo from '@/component/logo/logo';
-import { List, Radio, WhiteSpace, WingBlank, Button, InputItem } from 'antd-mobile';
+import { Radio, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { regisger } from '@/redux/user.redux';
@@ -19,12 +19,18 @@ export default class Register extends Component {
       type: 'boss' // genius
     }
   }
-  handleChange(key, val) {
+  handleChange(e, key) {
     this.setState({
-      [key]: val
+      [key]: e.target.value
+    })
+  }
+  handleChange1(key, val){
+    this.setState({
+      [key]:val
     })
   }
   handleRegister () {
+    console.log(this.state)
     this.props.regisger(this.state)
   }
   render() {
@@ -34,32 +40,35 @@ export default class Register extends Component {
         {this.props.redirectTo?<Redirect to={this.props.redirectTo} />:null}
         <Logo></Logo> 
         <WingBlank>
-          <List>
             {this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
-            <InputItem 
-              type='money'
-              onChange={v => this.handleChange('user',v)}
-            >用户名</InputItem>
+            <div className='inputbox'>
+              <input type="text" 
+                     className='_input'
+                     onChange={(e, key) => {this.handleChange(e, 'user')}}
+                     placeholder='请输入用户名'/>
+            </div>
+            <WhiteSpace />
+            <div className='inputbox'>
+              <input type="text"
+                     className='_input'
+                     onChange={(e, key) => {this.handleChange(e, 'pwd')}}
+                     placeholder='请输入密码'/>
+            </div>
             <WhiteSpace />            
-            <InputItem
-              type='money'
-              onChange={v => this.handleChange('pwd', v)}            
-            >密码</InputItem>
-            <WhiteSpace />
-            <InputItem
-              type='money'
-              onChange={v => this.handleChange('repeatpwd', v)}            
-            >确认密码</InputItem>
-            <WhiteSpace />
-          </List>
+            <div className='inputbox'>
+              <input type="text" 
+                     className='_input'
+                     onChange={(e, key) => {this.handleChange(e, 'repeatpwd')}}
+                     placeholder='请再次输入密码'/>
+            </div>
           <WhiteSpace />
           <RadioItem
            checked={this.state.type === 'boss'}
-           onClick={() => this.handleChange('type','boss')}                       
+           onClick={() => this.handleChange1('type','boss')}                       
           >boss</RadioItem>
           <RadioItem
            checked={this.state.type === 'genius'}
-           onClick={() => this.handleChange('type', 'genius')}                       
+           onClick={() => this.handleChange1('type', 'genius')}                       
            >牛人</RadioItem>
           <WhiteSpace />
           <Button type='primary' onClick={() => {this.handleRegister()}}>

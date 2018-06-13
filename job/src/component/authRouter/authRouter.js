@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
+import { loadData } from '@/redux/user.redux'
+import { connect } from 'react-redux'
 @withRouter
+@connect(
+  null,
+  {loadData}
+)
 export default class AuthRouter extends Component {
   /**
    * 获取用户信息
@@ -16,21 +21,7 @@ export default class AuthRouter extends Component {
         if (publicList.indexOf(pathname)>-1) {
           return null
       }
-      axios.get('/user/info')
-      .then(res=>{
-          if (res.status === 200) {
-              if (res.data.code === 0) {
-                //   登录成功的
-
-              } else {
-                //   没有登录的
-                this.props.history.push('/login')              
-              }
-          }
-      })
-      .catch(err => {
-          console.log(err)
-      })
+      
   }
   render() {
     return <div></div>
